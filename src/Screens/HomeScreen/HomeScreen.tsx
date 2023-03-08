@@ -1,11 +1,11 @@
-import React, {FC, useState, useEffect} from 'react';
-import {Text, SafeAreaView} from 'react-native';
+import React, {FC} from 'react';
+import {SafeAreaView} from 'react-native';
 import News from '../../Component/News/News';
+import styles from './HomeScreen.stylesheet';
 
 const HomeScreen: FC = () => {
   return (
-    <SafeAreaView>
-      <Text>HomeScreen</Text>
+    <SafeAreaView style={styles.container}>
       <News />
     </SafeAreaView>
   );

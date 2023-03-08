@@ -4,6 +4,7 @@ import {getNews} from '../../services/NewsService';
 import {NEWS_DATA} from '../../data/NEWS_DATA';
 import {API_KEY} from '@env';
 import INews from './News.interface';
+import styles from './News.stylesheet';
 
 const News: FC<INews> = () => {
   const [news, setNews] = useState<INews[]>([]);
@@ -16,7 +17,7 @@ const News: FC<INews> = () => {
     fetch(URL)
       .then(res => res.json())
       .then(result => {
-        setNews(result);
+        setNews(result.results);
       });
   };
 
@@ -25,14 +26,14 @@ const News: FC<INews> = () => {
   }, []);
 
   return (
-    <View style={{backgroundColor: 'grey'}}>
-      <Text>News</Text>
+    <View style={styles.container}>
       <FlatList
         data={news}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity style={styles.newsBox}>
               <Text>{item.title}</Text>
+              <Text>{item.description}</Text>
             </TouchableOpacity>
           );
         }}
