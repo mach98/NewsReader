@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 3,
     textAlign: 'center',
+    color: '#161716',
   },
   newsDescription: {
     fontStyle: 'italic',

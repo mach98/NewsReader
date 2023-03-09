@@ -5,8 +5,13 @@ import {NEWS_DATA} from '../../data/NEWS_DATA';
 import {API_KEY} from '@env';
 import INews from './News.interface';
 import styles from './News.stylesheet';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {HomeStackParamsList} from '../../Navigation/HomeStackNavigator';
 
 const News: FC<INews> = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
   const [news, setNews] = useState<INews[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +37,9 @@ const News: FC<INews> = () => {
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity style={[styles.newsBox, styles.shadowProp]}>
+            <TouchableOpacity
+              style={[styles.newsBox, styles.shadowProp]}
+              onPress={() => navigation.navigate('News', {id: item.link})}>
               <Text style={styles.newsTitle}>{item.title}</Text>
               <Text style={styles.newsDescription}>{item.description}</Text>
             </TouchableOpacity>
