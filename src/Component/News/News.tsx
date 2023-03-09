@@ -29,11 +29,12 @@ const News: FC<INews> = () => {
     <View style={styles.container}>
       <FlatList
         data={news}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity style={styles.newsBox}>
-              <Text>{item.title}</Text>
-              <Text>{item.description}</Text>
+            <TouchableOpacity style={[styles.newsBox, styles.shadowProp]}>
+              <Text style={styles.newsTitle}>{item.title}</Text>
+              <Text style={styles.newsDescription}>{item.description}</Text>
             </TouchableOpacity>
           );
         }}
