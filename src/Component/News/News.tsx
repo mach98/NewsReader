@@ -26,6 +26,12 @@ const News: FC<INews> = () => {
       });
   };
 
+  const navigateToDetails = (details: (typeof news)[number]) => {
+    navigation.navigate('News', {details});
+  };
+
+  const keyExtractor = (item: INews, index: number) => index.toString();
+
   useEffect(() => {
     fetchNews();
   }, []);
@@ -35,13 +41,16 @@ const News: FC<INews> = () => {
       <FlatList
         data={news}
         showsVerticalScrollIndicator={false}
+        keyExtractor={keyExtractor}
         renderItem={({item}) => {
           return (
             <TouchableOpacity
               style={[styles.newsBox, styles.shadowProp]}
-              onPress={() => navigation.navigate('News', {id: item.link})}>
-              <Text style={styles.newsTitle}>{item.title}</Text>
-              <Text style={styles.newsDescription}>{item.description}</Text>
+              onPress={() => navigateToDetails(item)}>
+              <View>
+                <Text style={styles.newsTitle}>{item.title}</Text>
+                <Text style={styles.newsDescription}>{item.description}</Text>
+              </View>
             </TouchableOpacity>
           );
         }}

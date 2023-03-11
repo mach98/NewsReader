@@ -3,10 +3,11 @@ import React from 'react';
 import HomeScreen from '../Screens/HomeScreen/HomeScreen';
 import NewsScreen from '../Screens/NewsScreen/NewsScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import INews from '../Component/News/News.interface';
 
 export type HomeStackParamsList = {
   Home: undefined;
-  News: {id: string};
+  News: {details: INews};
 };
 
 const Stack = createNativeStackNavigator<HomeStackParamsList>();
