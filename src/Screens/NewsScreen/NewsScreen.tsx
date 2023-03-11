@@ -14,7 +14,13 @@ const NewsScreen: FC<Props> = ({route}: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.newsHeader}>{details.title}</Text>
+      <View style={styles.creatorandDateView}>
+        <Text style={styles.writerText}>Writer: {details.creator}</Text>
+        <Text style={styles.writerText}>Date: {details.pubDate}</Text>
+      </View>
+
       <Text style={styles.newsContent}>{details.content}</Text>
+      <Text>Tags: Football</Text>
     </View>
   );
 };

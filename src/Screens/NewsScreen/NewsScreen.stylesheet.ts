@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+
     padding: 10,
   },
   newsHeader: {
@@ -19,6 +19,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'left',
     color: '#000',
+  },
+  writerText: {
+    fontSize: 14,
+    textAlign: 'left',
+    color: '#000',
+    marginBottom: 15,
+  },
+  tagsText: {
+    fontSize: 14,
+    textAlign: 'left',
+    color: '#000',
+  },
+  creatorandDateView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
