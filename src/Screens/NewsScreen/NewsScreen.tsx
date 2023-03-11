@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styles from './NewsScreen.stylesheet';
 
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {HomeStackParamsList} from '../../Navigation/HomeStackNavigator';
 
@@ -13,14 +13,25 @@ const NewsScreen: FC<Props> = ({route}: Props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.newsHeader}>{details.title}</Text>
-      <View style={styles.creatorandDateView}>
-        <Text style={styles.writerText}>Writer: {details.creator}</Text>
-        <Text style={styles.writerText}>Date: {details.pubDate}</Text>
-      </View>
+      <ScrollView>
+        <Text style={styles.newsHeader}>{details.title}</Text>
+        <View style={styles.creatorandDateView}>
+          <Text style={styles.writerText}>Writer: {details.creator}</Text>
+          <Text style={styles.writerText}>Date: {details.pubDate}</Text>
+        </View>
 
-      <Text style={styles.newsContent}>{details.content}</Text>
-      <Text>Tags: Football</Text>
+        <Text style={styles.newsContent}>{details.content}</Text>
+
+        <View style={styles.tagsText}>
+          <Text style={styles.tagText}>Tags:</Text>
+          {details.keywords?.map((keyword, index) => (
+            <Text key={index} style={styles.tagText}>
+              {' '}
+              {keyword},
+            </Text>
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 };

@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-
     padding: 10,
+    marginBottom: 10,
   },
   newsHeader: {
     fontSize: 20,
@@ -26,14 +26,18 @@ const styles = StyleSheet.create({
     color: '#000',
     marginBottom: 15,
   },
-  tagsText: {
-    fontSize: 14,
-    textAlign: 'left',
-    color: '#000',
-  },
   creatorandDateView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  tagsText: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginTop: 10,
+  },
+  tagText: {
+    fontSize: 14,
+    color: '#000',
   },
 });
 
