@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "497014285840",
+    "project_id": "newsreader-auth",
+    "storage_bucket": "newsreader-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497014285840:android:409c1ae4fb1f0485efcc95",
+        "android_client_info": {
+          "package_name": "com.newsreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497014285840-od00aa60r8kmol7vhsqhls2t10v048he.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOX1VwKbq7A1wze9hazvCg37pZUDobGug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497014285840-5e3cjbdprjtq3j3qsh6smuu3bmegf8td.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
