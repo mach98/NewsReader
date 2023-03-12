@@ -1,7 +1,5 @@
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import React, {FC, useEffect, useState} from 'react';
-import {getNews} from '../../services/NewsService';
-import {NEWS_DATA} from '../../data/NEWS_DATA';
 import {API_KEY} from '@env';
 import INews from './News.interface';
 import styles from './News.stylesheet';
