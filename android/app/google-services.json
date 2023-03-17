@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "497014285840-3cf3jks0p34oq52b25dvrik35c7befrl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.newsreader",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "497014285840-od00aa60r8kmol7vhsqhls2t10v048he.apps.googleusercontent.com",
           "client_type": 3
         }

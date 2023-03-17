@@ -1,1 +1,3 @@
-export default interface ILogin {}
+export default interface ILogin {
+  onPress: () => void;
+}

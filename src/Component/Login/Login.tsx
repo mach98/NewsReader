@@ -4,28 +4,19 @@ import {Text, View, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import styles from './Login.stylesheet';
+import ILogin from './Login.interface';
 
-const Login: FC = () => {
+const Login: FC<ILogin> = props => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.headerText}>Login Name</Text>
       <View style={styles.textsArea}>
         <View style={styles.textInputs}>
-          <TextInput />
+          <TextInput placeholder="Email" />
         </View>
-        <View style={styles.textInputs}>
-          {/* <TextInput
-            secureTextEntry
-            placeholder="Password"
-            mode="outlined"
-            right={<TextInput.Icon icon="eye" />}
-          /> */}
-        </View>
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity style={styles.loginButton} onPress={props.onPress}>
           <Text>Log In</Text>
-          <Icon name="github" size={20} color="#000" />
         </TouchableOpacity>
-        <Text>Hello</Text>
       </View>
     </SafeAreaView>
   );
