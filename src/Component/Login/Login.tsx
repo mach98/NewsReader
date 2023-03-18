@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Text, View, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -12,19 +12,58 @@ import {HomeStackParamsList} from '../../Navigation/HomeStackNavigator';
 const Login: FC<ILogin> = props => {
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [rePassword, setRePassword] = useState<string>('');
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);
+
+  const handleLogin = () => {
+    console.log('email', email);
+  };
+
+  const handleSignUp = () => {
+    console.log('register');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textsArea}>
         <Text style={styles.headerText}>Welcome Back!</Text>
         <TextInput
           placeholder="Email"
+          value={email}
+          onChangeText={val => setEmail(val)}
           style={styles.textInput}
-          inputMode="email"
+          maxLength={30}
+          keyboardType="email-address"
         />
-        <TextInput placeholder="Password" style={styles.textInput} />
+        <TextInput
+          placeholder="Password"
+          style={styles.textInput}
+          maxLength={100}
+          value={password}
+          onChangeText={val => setPassword(val)}
+          secureTextEntry={true}
+        />
 
-        <TouchableOpacity style={styles.loginButton} onPress={() => {}}>
-          <Text style={styles.googleText}>Login</Text>
+        {isRegistered && (
+          <TextInput
+            placeholder="Confirm Password"
+            style={styles.textInput}
+            maxLength={100}
+            value={rePassword}
+            onChangeText={val => setRePassword(val)}
+            secureTextEntry={true}
+          />
+        )}
+
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={isRegistered ? handleSignUp : handleLogin}>
+          <Text style={styles.googleText}>
+            {isRegistered ? 'Sign In' : 'Login'}
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.googleButton} onPress={props.onPress}>
@@ -34,7 +73,7 @@ const Login: FC<ILogin> = props => {
       </View>
       <View style={styles.signUpArea}>
         <Text style={styles.signUpText}>Don't have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('CreateAccount')}>
+        <TouchableOpacity onPress={() => setIsRegistered(true)}>
           <Text style={styles.signUpTextLink}>Sign Up</Text>
         </TouchableOpacity>
       </View>
