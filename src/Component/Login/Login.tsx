@@ -15,7 +15,7 @@ const Login: FC<ILogin> = props => {
           <TextInput placeholder="Email" />
         </View>
         <TouchableOpacity style={styles.loginButton} onPress={props.onPress}>
-          <Text>Log In</Text>
+          <Text>Sign In with Google</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

@@ -21,6 +21,9 @@ const News: FC<INews> = () => {
       .then(res => res.json())
       .then(result => {
         setNews(result.results);
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 

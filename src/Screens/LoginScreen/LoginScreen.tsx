@@ -1,6 +1,5 @@
 import {SafeAreaView} from 'react-native-safe-area-context';
 import React, {useEffect, useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import styles from './LoginScreen.stylesheet';
 import Login from '../../Component/Login/Login';
@@ -11,9 +10,11 @@ import {
   GoogleSignin,
   GoogleSigninButton,
 } from '@react-native-google-signin/google-signin';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const LoginScreen = () => {
-  const navigation = useNavigation<HomeStackParamsList>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
 
@@ -45,7 +46,7 @@ const LoginScreen = () => {
     return <Login onPress={onGoogleButtonPress} />;
   }
 
-  return <Text>{user.displayName}</Text>;
+  // navigation.navigate('Home');
 };
 
 export default LoginScreen;
