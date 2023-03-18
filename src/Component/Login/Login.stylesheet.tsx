@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 20,
     justifyContent: 'center',
-    top: '75%',
+    top: '50%',
   },
   signUpText: {
     fontSize: 20,

@@ -5,43 +5,67 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 import styles from './Login.stylesheet';
 import ILogin from './Login.interface';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {HomeStackParamsList} from '../../Navigation/HomeStackNavigator';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
 const Login: FC<ILogin> = props => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
-
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [rePassword, setRePassword] = useState<string>('');
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useState<FirebaseAuthTypes.User | null>(null);
 
   const handleLogin = () => {
     console.log('email', email);
   };
 
-  const handleSignUp = () => {
-    console.log('register');
+  const handleSignUp = async () => {
+    if (email && password && rePassword) {
+      if (password !== rePassword) {
+        console.log('Password not match');
+      } else {
+        if (password.length < 6) {
+          console.log('Password must be at least 6 characters');
+        } else {
+          await auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(userCredential => {
+              const user = userCredential.user;
+              if (user) {
+                setUserInfo(user);
+                console.log(user);
+              }
+            })
+            .catch(error => {
+              console.log('Cannot register user: ', error);
+            });
+        }
+      }
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textsArea}>
-        <Text style={styles.headerText}>Welcome Back!</Text>
+        <Text style={styles.headerText}>
+          {isRegistered ? 'Create Account' : 'Welcome Back!'}
+        </Text>
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={val => setEmail(val)}
           style={styles.textInput}
           maxLength={30}
+          autoComplete="email"
+          autoCapitalize="none"
           keyboardType="email-address"
         />
         <TextInput
           placeholder="Password"
           style={styles.textInput}
           maxLength={100}
+          autoCapitalize="none"
+          autoComplete="off"
           value={password}
           onChangeText={val => setPassword(val)}
           secureTextEntry={true}
@@ -52,6 +76,8 @@ const Login: FC<ILogin> = props => {
             placeholder="Confirm Password"
             style={styles.textInput}
             maxLength={100}
+            autoCapitalize="none"
+            autoComplete="off"
             value={rePassword}
             onChangeText={val => setRePassword(val)}
             secureTextEntry={true}
@@ -72,9 +98,13 @@ const Login: FC<ILogin> = props => {
         </TouchableOpacity>
       </View>
       <View style={styles.signUpArea}>
-        <Text style={styles.signUpText}>Don't have an account?</Text>
-        <TouchableOpacity onPress={() => setIsRegistered(true)}>
-          <Text style={styles.signUpTextLink}>Sign Up</Text>
+        <Text style={styles.signUpText}>
+          {isRegistered ? 'Already have an account?' : "Don't have an account?"}
+        </Text>
+        <TouchableOpacity onPress={() => setIsRegistered(!isRegistered)}>
+          <Text style={styles.signUpTextLink}>
+            {isRegistered ? 'Login' : 'Sign Up'}
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
