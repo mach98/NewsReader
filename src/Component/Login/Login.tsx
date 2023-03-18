@@ -15,8 +15,20 @@ const Login: FC<ILogin> = props => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState<FirebaseAuthTypes.User | null>(null);
 
-  const handleLogin = () => {
-    console.log('email', email);
+  const handleLogin = async () => {
+    try {
+      await auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          const user = userCredential.user;
+          if (user) {
+            setUserInfo(user);
+            setIsLogin(true);
+          }
+        });
+    } catch (error) {
+      console.log('Cannot login user: ', error);
+    }
   };
 
   const handleSignUp = async () => {
@@ -33,7 +45,7 @@ const Login: FC<ILogin> = props => {
               const user = userCredential.user;
               if (user) {
                 setUserInfo(user);
-                console.log(user);
+                setIsRegistered(false);
               }
             })
             .catch(error => {
