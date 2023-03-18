@@ -1,4 +1,5 @@
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {Text} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import styles from './LoginScreen.stylesheet';
@@ -6,10 +7,7 @@ import Login from '../../Component/Login/Login';
 import {useNavigation} from '@react-navigation/native';
 import {WEB_CLIENT_ID} from '@env';
 import {HomeStackParamsList} from '../../Navigation/HomeStackNavigator';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const LoginScreen = () => {
@@ -45,7 +43,6 @@ const LoginScreen = () => {
   if (!user) {
     return <Login onPress={onGoogleButtonPress} />;
   }
-
   // navigation.navigate('Home');
 };
 

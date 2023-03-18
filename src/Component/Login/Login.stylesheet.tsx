@@ -11,20 +11,48 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  textInputs: {
-    flexDirection: 'row',
+  textInput: {
     marginVertical: 10,
-    borderWidth: 2,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    padding: 10,
   },
   textsArea: {
-    marginTop: 20,
-    marginHorizontal: 30,
+    marginTop: '40%',
+    marginHorizontal: 20,
   },
   loginButton: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
-    padding: 10,
+    padding: 15,
     borderRadius: 10,
+    marginTop: 20,
+  },
+  googleText: {
+    fontSize: 20,
+    marginLeft: 5,
+  },
+  googleButton: {
+    flexDirection: 'row',
+    marginTop: 20,
+    backgroundColor: '#DDDDDD',
+    padding: 15,
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+  signUpArea: {
+    flexDirection: 'row',
+    marginTop: 20,
+    justifyContent: 'center',
+    top: '75%',
+  },
+  signUpText: {
+    fontSize: 20,
+  },
+  signUpTextLink: {
+    fontSize: 20,
+    textDecorationLine: 'underline',
+    marginLeft: 7,
   },
 });
 
