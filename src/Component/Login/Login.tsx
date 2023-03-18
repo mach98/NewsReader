@@ -14,8 +14,8 @@ const Login: FC<ILogin> = props => {
     useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.headerText}>Welcome Back!</Text>
       <View style={styles.textsArea}>
+        <Text style={styles.headerText}>Welcome Back!</Text>
         <TextInput
           placeholder="Email"
           style={styles.textInput}

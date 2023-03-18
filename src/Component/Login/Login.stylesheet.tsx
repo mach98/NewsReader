@@ -6,10 +6,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   headerText: {
-    alignItems: 'center',
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
+    marginBottom: 20,
   },
   textInput: {
     marginVertical: 10,
