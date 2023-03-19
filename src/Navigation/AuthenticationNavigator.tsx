@@ -13,10 +13,12 @@ const Stack = createNativeStackNavigator<AuthStackParamsList>();
 const AuthenticationNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="GetStarted"
       screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="GetStarted" component={GetStartedScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
     </Stack.Navigator>
   );
 };
+
+export default AuthenticationNavigator;
