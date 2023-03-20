@@ -3,6 +3,9 @@ import HomeScreen from '../Screens/HomeScreen/HomeScreen';
 import NewsScreen from '../Screens/NewsScreen/NewsScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import INews from '../Component/News/News.interface';
+import MainStackNavigator from './MainStackNavigator';
+import DrawerNavigator from './DrawerNavigator';
+import AuthenticationNavigator from './AuthenticationNavigator';
 
 export type HomeStackParamsList = {
   Home: undefined;

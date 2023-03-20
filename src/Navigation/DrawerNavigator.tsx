@@ -7,7 +7,7 @@ export type DrawerParamList = {
   Profile: undefined;
 };
 
-const MyDrawer = () => {
+const DrawerNavigator = () => {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Profile" component={ProfileScreen} />
@@ -15,4 +15,4 @@ const MyDrawer = () => {
   );
 };
 
-export default MyDrawer;
+export default DrawerNavigator;
