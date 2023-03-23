@@ -5,16 +5,16 @@ import HomeScreen from '../Screens/HomeScreen/HomeScreen';
 import SettingsScreen from '../Screens/SettingsScreen/SettingsScreen';
 import BookmarksScreen from '../Screens/BookmarksScreen/BookmarksScreen';
 
-export type TabParamList = {
+export type BottomTabParamList = {
   Home: undefined;
   Settings: undefined;
   Explore: undefined;
   Bookmarks: undefined;
 };
 
-const Tab = createBottomTabNavigator<TabParamList>();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
-function MainStackNavigator() {
+function BottomTabNavigator() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={HomeScreen} />
@@ -25,4 +25,4 @@ function MainStackNavigator() {
   );
 }
 
-export default MainStackNavigator;
+export default BottomTabNavigator;
