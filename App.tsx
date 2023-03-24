@@ -7,7 +7,6 @@ import BottomTabNavigator from './src/Navigation/BottomTabNavigator';
 function App() {
   return (
     <NavigationContainer>
-      {/* <HomeStackNavigator /> */}
       <BottomTabNavigator />
     </NavigationContainer>
   );

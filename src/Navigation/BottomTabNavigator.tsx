@@ -9,13 +9,7 @@ import BookmarkIcon from 'react-native-vector-icons/Octicons';
 import ExploreIcon from 'react-native-vector-icons/Feather';
 import SettingsIcon from 'react-native-vector-icons/Feather';
 import {ICON_SIZE} from '../Constants/dimensions';
-
-export type BottomTabParamList = {
-  Home: undefined;
-  Settings: undefined;
-  Explore: undefined;
-  Bookmarks: undefined;
-};
+import {BottomTabParamList} from '../types/navigationTypes';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 

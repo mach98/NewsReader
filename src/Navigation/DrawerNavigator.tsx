@@ -3,10 +3,6 @@ import ProfileScreen from '../Screens/ProfileScreen/ProfileScreen';
 
 const Drawer = createDrawerNavigator();
 
-export type DrawerParamList = {
-  Profile: undefined;
-};
-
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator>

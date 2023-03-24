@@ -5,7 +5,7 @@ import INews from './News.interface';
 import styles from './News.stylesheet';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {HomeStackParamsList} from '../../Navigation/HomeStackNavigator';
+import {HomeStackParamsList} from '../../types/navigationTypes';
 
 const News: FC<INews> = () => {
   const navigation =

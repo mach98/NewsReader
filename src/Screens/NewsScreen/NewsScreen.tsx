@@ -3,7 +3,7 @@ import styles from './NewsScreen.stylesheet';
 
 import {View, Text, ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {HomeStackParamsList} from '../../Navigation/HomeStackNavigator';
+import {HomeStackParamsList} from '../../types/navigationTypes';
 
 type Props = NativeStackScreenProps<HomeStackParamsList, 'News'>;
 
