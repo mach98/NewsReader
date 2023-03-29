@@ -10,6 +10,7 @@ import ExploreIcon from 'react-native-vector-icons/Feather';
 import SettingsIcon from 'react-native-vector-icons/Feather';
 import {ICON_SIZE} from '../Constants/dimensions';
 import {BottomTabParamList} from '../types/navigationTypes';
+import HomeStackNavigator from './HomeStackNavigator';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -18,7 +19,7 @@ function BottomTabNavigator() {
     <Tab.Navigator screenOptions={{headerShown: false, tabBarShowLabel: false}}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStackNavigator}
         options={{
           tabBarIcon: ({focused}) => <HomeIcon name="home" size={ICON_SIZE} />,
         }}

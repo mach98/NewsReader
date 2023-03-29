@@ -14,8 +14,6 @@ export type BottomTabParamList = {
 export type HomeStackParamsList = {
   Home: undefined;
   News: {details: INews};
-  BottomTab: undefined;
-  Drawer: undefined;
 };
 
 export type DrawerParamList = {
