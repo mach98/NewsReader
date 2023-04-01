@@ -8,7 +8,6 @@ export type BottomTabParamList = {
   Settings: undefined;
   Explore: undefined;
   Bookmarks: undefined;
-  News: {details: INews};
 };
 
 export type HomeStackParamsList = {

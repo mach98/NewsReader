@@ -4,10 +4,13 @@ import News from '../../Component/News/News';
 import styles from './HomeScreen.stylesheet';
 import HomeIcon from 'react-native-vector-icons/Ionicons';
 import DrawerButton from '../../Component/DrawerButton/DrawerButton';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 const HomeScreen: FC = () => {
-  // const [toggle, setToggleDrawer] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+
+  // const navigation = useNavigation<DrawerNavigationProp<ParamListBase>>();
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -16,11 +19,14 @@ const HomeScreen: FC = () => {
     }, 2000);
   };
 
-  const toggleDrawer = () => {};
+  // const toggleDrawer = () => {
+  //   navigation.openDrawer();
+  // };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <DrawerButton onPress={toggleDrawer} />
+        <DrawerButton />
+        {/* <DrawerButton onPress={toggleDrawer} /> */}
         <View>
           <Text>Location</Text>
         </View>
