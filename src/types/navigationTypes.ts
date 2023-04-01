@@ -16,6 +16,7 @@ export type HomeStackParamsList = {
 };
 
 export type DrawerParamList = {
+  BottomTab: BottomTabParamList;
   Profile: undefined;
 };
 

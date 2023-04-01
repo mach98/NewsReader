@@ -8,11 +8,7 @@ const Drawer = createDrawerNavigator<DrawerParamList>();
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator screenOptions={{headerShown: false}}>
-      <Drawer.Screen
-        name="BottomTab"
-        component={BottomTabNavigator}
-        options={{tabBarV}}
-      />
+      <Drawer.Screen name="BottomTab" component={BottomTabNavigator} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );

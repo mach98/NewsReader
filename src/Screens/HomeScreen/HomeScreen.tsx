@@ -6,11 +6,12 @@ import HomeIcon from 'react-native-vector-icons/Ionicons';
 import DrawerButton from '../../Component/DrawerButton/DrawerButton';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {DrawerActions} from '@react-navigation/native';
 
 const HomeScreen: FC = () => {
   const [refreshing, setRefreshing] = useState(false);
 
-  // const navigation = useNavigation<DrawerNavigationProp<ParamListBase>>();
+  const navigation = useNavigation<DrawerNavigationProp<ParamListBase>>();
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -25,7 +26,9 @@ const HomeScreen: FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <DrawerButton />
+        <DrawerButton
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        />
         {/* <DrawerButton onPress={toggleDrawer} /> */}
         <View>
           <Text>Location</Text>
