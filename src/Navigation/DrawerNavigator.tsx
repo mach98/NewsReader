@@ -1,11 +1,18 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import ProfileScreen from '../Screens/ProfileScreen/ProfileScreen';
+import {DrawerParamList} from '../types/navigationTypes';
+import BottomTabNavigator from './BottomTabNavigator';
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator screenOptions={{headerShown: false}}>
+      <Drawer.Screen
+        name="BottomTab"
+        component={BottomTabNavigator}
+        options={{tabBarV}}
+      />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );
