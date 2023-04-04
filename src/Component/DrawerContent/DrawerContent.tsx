@@ -6,12 +6,20 @@ import {
   DrawerItemList,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {DrawerParamList} from '../../types/navigationTypes';
 
-const DrawerContent = () => {
+const DrawerContent = (props: any) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<DrawerParamList>>();
   return (
-    <View>
-      <Text>DrawerContent</Text>
-    </View>
+    <DrawerContentScrollView {...props}>
+      <DrawerItem
+        label="Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
+    </DrawerContentScrollView>
   );
 };
 
