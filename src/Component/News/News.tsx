@@ -1,4 +1,10 @@
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native';
 import React, {FC, useEffect, useState} from 'react';
 import {API_KEY} from '@env';
 import INews from './News.interface';
@@ -12,6 +18,7 @@ const News: FC<INews> = () => {
     useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
   const [news, setNews] = useState<INews[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=ng`;
 
@@ -25,6 +32,14 @@ const News: FC<INews> = () => {
       .catch(err => {
         console.log(err);
       });
+  };
+
+  const refreshData = () => {
+    setIsRefreshing(true);
+    fetchNews();
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 4000);
   };
 
   const navigateToDetails = (details: (typeof news)[number]) => {
@@ -55,6 +70,9 @@ const News: FC<INews> = () => {
             </TouchableOpacity>
           );
         }}
+        refreshControl={
+          <RefreshControl refreshing={isRefreshing} onRefresh={refreshData} />
+        }
       />
     </View>
   );
