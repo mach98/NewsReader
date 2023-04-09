@@ -28,6 +28,10 @@ const styles = StyleSheet.create({
   newsDescription: {
     fontStyle: 'italic',
   },
+  activityIndicator: {
+    paddingHorizontal: '50%',
+    paddingVertical: '50%',
+  },
 });
 
 export default styles;
