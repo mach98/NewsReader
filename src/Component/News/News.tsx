@@ -4,6 +4,7 @@ import {
   FlatList,
   TouchableOpacity,
   RefreshControl,
+  ActivityIndicator,
 } from 'react-native';
 import React, {FC, useEffect, useState} from 'react';
 import {API_KEY} from '@env';
@@ -28,6 +29,7 @@ const News: FC<INews> = () => {
       .then(res => res.json())
       .then(result => {
         setNews(result.results);
+        setIsLoading(false);
       })
       .catch(err => {
         console.log(err);
@@ -54,26 +56,30 @@ const News: FC<INews> = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={news}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={keyExtractor}
-        renderItem={({item}) => {
-          return (
-            <TouchableOpacity
-              style={[styles.newsBox, styles.shadowProp]}
-              onPress={() => navigateToDetails(item)}>
-              <View>
-                <Text style={styles.newsTitle}>{item.title}</Text>
-                <Text style={styles.newsDescription}>{item.description}</Text>
-              </View>
-            </TouchableOpacity>
-          );
-        }}
-        refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={refreshData} />
-        }
-      />
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <FlatList
+          data={news}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={keyExtractor}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity
+                style={[styles.newsBox, styles.shadowProp]}
+                onPress={() => navigateToDetails(item)}>
+                <View>
+                  <Text style={styles.newsTitle}>{item.title}</Text>
+                  <Text style={styles.newsDescription}>{item.description}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+          refreshControl={
+            <RefreshControl refreshing={isRefreshing} onRefresh={refreshData} />
+          }
+        />
+      )}
     </View>
   );
 };
