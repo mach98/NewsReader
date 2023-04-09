@@ -57,7 +57,10 @@ const News: FC<INews> = () => {
   return (
     <View style={styles.container}>
       {isLoading ? (
-        <ActivityIndicator size="large" />
+        <ActivityIndicator
+          size="large"
+          style={{paddingHorizontal: '50%', paddingVertical: '50%'}}
+        />
       ) : (
         <FlatList
           data={news}
