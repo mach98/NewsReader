@@ -24,7 +24,6 @@ const News: FC<INews> = () => {
   const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=ng`;
 
   const fetchNews = () => {
-    setIsLoading(true);
     fetch(URL)
       .then(res => res.json())
       .then(result => {
@@ -51,6 +50,7 @@ const News: FC<INews> = () => {
   const keyExtractor = (item: INews, index: number) => index.toString();
 
   useEffect(() => {
+    setIsLoading(true);
     fetchNews();
   }, []);
 
