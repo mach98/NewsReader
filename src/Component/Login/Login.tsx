@@ -7,7 +7,7 @@ import styles from './Login.stylesheet';
 import ILogin from './Login.interface';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
-const Login: FC<ILogin> = props => {
+const Login: FC<ILogin> = ({addUser, onPress}: ILogin) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [rePassword, setRePassword] = useState<string>('');
@@ -23,6 +23,7 @@ const Login: FC<ILogin> = props => {
           const user = userCredential.user;
           if (user) {
             setUserInfo(user);
+            addUser(user);
             setIsLogin(true);
           }
         });
@@ -45,6 +46,7 @@ const Login: FC<ILogin> = props => {
               const user = userCredential.user;
               if (user) {
                 setUserInfo(user);
+                addUser(user);
                 setIsRegistered(false);
               }
             })
@@ -104,7 +106,7 @@ const Login: FC<ILogin> = props => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.googleButton} onPress={props.onPress}>
+        <TouchableOpacity style={styles.googleButton} onPress={onPress}>
           <Icon name="google" size={20} />
           <Text style={styles.googleText}>Sign In with Google</Text>
         </TouchableOpacity>

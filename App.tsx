@@ -1,15 +1,16 @@
 import {View, Text} from 'react-native';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeStackNavigator from './src/Navigation/HomeStackNavigator';
-import BottomTabNavigator from './src/Navigation/BottomTabNavigator';
 import DrawerNavigator from './src/Navigation/DrawerNavigator';
+import {UserAuthContext} from './src/Context/UserAuthContext';
 
 function App() {
   return (
-    <NavigationContainer>
-      <DrawerNavigator />
-    </NavigationContainer>
+    <UserAuthContext.Provider value={{user: null, setUser: () => {}}}>
+      <NavigationContainer>
+        <DrawerNavigator />
+      </NavigationContainer>
+    </UserAuthContext.Provider>
   );
 }
 

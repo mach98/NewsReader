@@ -2,7 +2,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Text} from 'react-native';
 import React, {useEffect, useState, FC} from 'react';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import styles from './LoginScreen.stylesheet';
+import firestore from '@react-native-firebase/firestore';
 import Login from '../../Component/Login/Login';
 import {useNavigation} from '@react-navigation/native';
 import {WEB_CLIENT_ID} from '@env';
@@ -15,6 +15,21 @@ const LoginScreen: FC = () => {
     useNavigation<NativeStackNavigationProp<HomeStackParamsList>>();
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+
+  const addUser = async (user: FirebaseAuthTypes.User) => {
+    const userRef = firestore().collection('users').doc(user.uid);
+    const snapshot = await userRef.get();
+    if (!snapshot.exists) {
+      const data = {
+        id: user.uid,
+        email: user.email,
+        name: user.displayName,
+        photoUrl: user.photoURL,
+        dateCreated: new Date(),
+      };
+      await userRef.set(data);
+    }
+  };
 
   GoogleSignin.configure({
     webClientId: WEB_CLIENT_ID,
@@ -33,6 +48,10 @@ const LoginScreen: FC = () => {
   useEffect(() => {
     auth().onAuthStateChanged(userState => {
       setUser(userState);
+      if (userState) {
+        addUser(userState);
+        navigation.navigate('Home');
+      }
 
       if (initializing) {
         setInitializing(false);
@@ -41,10 +60,9 @@ const LoginScreen: FC = () => {
   }, []);
 
   if (!user) {
-    return <Login onPress={onGoogleButtonPress} />;
+    return <Login onPress={onGoogleButtonPress} addUser={addUser} />;
   }
-  return <Text>Whats up</Text>;
-  // navigation.navigate('Home');
+  navigation.navigate('Home');
 };
 
 export default LoginScreen;

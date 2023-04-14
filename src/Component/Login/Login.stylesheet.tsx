@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   textsArea: {
-    marginTop: '40%',
+    marginTop: '20%',
     marginHorizontal: 20,
   },
   loginButton: {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 20,
     justifyContent: 'center',
-    top: '50%',
+    top: '20%',
   },
   signUpText: {
     fontSize: 20,

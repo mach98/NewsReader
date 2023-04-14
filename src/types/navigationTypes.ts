@@ -20,6 +20,11 @@ export type DrawerParamList = {
   Profile: undefined;
 };
 
+export type AuthStackParamsList = {
+  Login: undefined;
+  GetStarted: undefined;
+};
+
 export type HomeStackNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<HomeStackParamsList, 'News'>,
   BottomTabNavigationProp<BottomTabParamList, 'Home'>
