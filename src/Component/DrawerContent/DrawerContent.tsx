@@ -12,8 +12,10 @@ import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {DrawerParamList} from '../../types/navigationTypes';
+import {UserAuthContext} from '../../Context/UserAuthContext';
 
 const DrawerContent = (props: any) => {
+  const userContext = React.useContext(UserAuthContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<DrawerParamList>>();
   return (
@@ -28,7 +30,7 @@ const DrawerContent = (props: any) => {
             source={require('../../Assets/images/will.jpg')}
             style={styles.userAvatar}
           />
-          <Text style={styles.userName}>Williams</Text>
+          <Text style={styles.userName}>{userContext.user?.displayName}</Text>
         </ImageBackground>
 
         <DrawerItem
@@ -44,7 +46,9 @@ const DrawerContent = (props: any) => {
             <Text style={styles.menuText}>Tell a Friend</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={{paddingVertical: 15}}>
+        <TouchableOpacity
+          onPress={userContext.logout}
+          style={{paddingVertical: 15}}>
           <View style={styles.menuTextRow}>
             <Ionicons name="exit-outline" style={styles.menuTextIcon} />
             <Text style={styles.menuText}>Sign Out</Text>

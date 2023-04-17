@@ -1,16 +1,31 @@
-import {View, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import DrawerNavigator from './src/Navigation/DrawerNavigator';
-import {UserAuthContext} from './src/Context/UserAuthContext';
+import {UserAuthProvider, UserAuthContext} from './src/Context/UserAuthContext';
+import auth from '@react-native-firebase/auth';
 
 function App() {
+  // const {user, setUser} = React.useContext(UserAuthContext);
+  // const [initializing, setInitializing] = useState(true);
+
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(user => {
+  //     setUser(user);
+  //     if (initializing) {
+  //       setInitializing(false);
+  //     }
+  //   });
+  //   return subscriber;
+  // }, []);
+
+  // if (initializing) return null;
   return (
-    <UserAuthContext.Provider value={{user: null, setUser: () => {}}}>
+    <UserAuthProvider>
       <NavigationContainer>
         <DrawerNavigator />
       </NavigationContainer>
-    </UserAuthContext.Provider>
+    </UserAuthProvider>
   );
 }
 
