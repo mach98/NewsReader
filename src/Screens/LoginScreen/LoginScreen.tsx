@@ -59,9 +59,8 @@ const LoginScreen: FC = () => {
     });
   }, []);
 
-  if (!user) {
-    return <Login onPress={onGoogleButtonPress} addUser={addUser} />;
-  }
+  if (!user) return <Login onPress={onGoogleButtonPress} addUser={addUser} />;
+
   navigation.navigate('Home');
 };
 

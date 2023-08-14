@@ -1,6 +1,9 @@
 import React, {useState, createContext, FC, useContext, useEffect} from 'react';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AuthStackParamsList} from '../types/navigationTypes';
+import {useNavigation} from '@react-navigation/native';
 interface IUserAuthContext {
   user: FirebaseAuthTypes.User | null;
   setUser: React.Dispatch<React.SetStateAction<FirebaseAuthTypes.User | null>>;
@@ -24,14 +27,6 @@ export const UserAuthProvider: FC = ({children}: any) => {
   const [userInfo, setUserInfo] = useState<FirebaseAuthTypes.User | null>(null);
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(user => {
-      setUser(user);
-    });
-    return subscriber;
-  }, []);
-
   return (
     <UserAuthContext.Provider
       value={{
@@ -98,6 +93,10 @@ export const UserAuthProvider: FC = ({children}: any) => {
         logout: async () => {
           try {
             await auth().signOut();
+            // navigation.reset({
+            //   index: 0,
+            //   routes: [{name: 'Login'}],
+            // });
           } catch (error) {
             console.log('Cannot logout user: ', error);
           }
