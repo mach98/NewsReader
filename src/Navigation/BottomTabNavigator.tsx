@@ -10,6 +10,7 @@ import SettingsIcon from 'react-native-vector-icons/Feather';
 import {ICON_SIZE} from '../Constants/dimensions';
 import {BottomTabParamList} from '../types/navigationTypes';
 import HomeStackNavigator from './HomeStackNavigator';
+import COLORS from '../Constants/colors';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -17,10 +18,16 @@ function BottomTabNavigator() {
   return (
     <Tab.Navigator screenOptions={{headerShown: false, tabBarShowLabel: false}}>
       <Tab.Screen
-        name="Home"
+        name="HomeStack"
         component={HomeStackNavigator}
         options={{
-          tabBarIcon: ({focused}) => <HomeIcon name="home" size={ICON_SIZE} />,
+          tabBarIcon: ({focused}) => (
+            <HomeIcon
+              name="home"
+              size={ICON_SIZE}
+              color={focused ? COLORS.ORANGE : COLORS.GREY}
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -28,7 +35,11 @@ function BottomTabNavigator() {
         component={BookmarksScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <BookmarkIcon name="bookmark" size={ICON_SIZE} />
+            <BookmarkIcon
+              name="bookmark"
+              size={ICON_SIZE}
+              color={focused ? COLORS.ORANGE : COLORS.GREY}
+            />
           ),
         }}
       />
@@ -37,7 +48,11 @@ function BottomTabNavigator() {
         component={ExploreScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <ExploreIcon name="compass" size={ICON_SIZE} />
+            <ExploreIcon
+              name="compass"
+              size={ICON_SIZE}
+              color={focused ? COLORS.ORANGE : COLORS.GREY}
+            />
           ),
         }}
       />
@@ -46,7 +61,11 @@ function BottomTabNavigator() {
         component={SettingsScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <SettingsIcon name="settings" size={ICON_SIZE} />
+            <SettingsIcon
+              name="settings"
+              size={ICON_SIZE}
+              color={focused ? COLORS.ORANGE : COLORS.GREY}
+            />
           ),
         }}
       />

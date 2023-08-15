@@ -1,14 +1,14 @@
-import React from 'react';
+// import React from 'react';
 
-import Routes from './Routes';
-import {UserAuthProvider} from '../Context/UserAuthContext';
+// import Routes from './Routes';
+// import {UserAuthProvider} from '../Context/UserAuthContext';
 
-const Providers = () => {
-  return (
-    <UserAuthProvider>
-      <Routes />
-    </UserAuthProvider>
-  );
-};
+// const Providers = () => {
+//   return (
+//     <UserAuthProvider>
+//       <Routes />
+//     </UserAuthProvider>
+//   );
+// };
 
-export default Providers;
+// export default Providers;

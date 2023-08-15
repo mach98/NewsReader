@@ -4,7 +4,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 
 export type BottomTabParamList = {
-  Home: HomeStackParamsList;
+  HomeStack: HomeStackParamsList;
   Settings: undefined;
   Explore: undefined;
   Bookmarks: undefined;
@@ -27,5 +27,5 @@ export type AuthStackParamsList = {
 
 export type HomeStackNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<HomeStackParamsList, 'News'>,
-  BottomTabNavigationProp<BottomTabParamList, 'Home'>
+  BottomTabNavigationProp<BottomTabParamList, 'HomeStack'>
 >;

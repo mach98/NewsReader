@@ -12,10 +12,10 @@ import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {DrawerParamList} from '../../types/navigationTypes';
-import {UserAuthContext} from '../../Context/UserAuthContext';
+import {useUserAuthContext} from '../../Context/UserAuthContext';
 
 const DrawerContent = (props: any) => {
-  const userContext = React.useContext(UserAuthContext);
+  const userContext = useUserAuthContext();
   const navigation =
     useNavigation<NativeStackNavigationProp<DrawerParamList>>();
   return (

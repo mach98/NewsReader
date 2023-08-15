@@ -6,7 +6,7 @@ import {IUserAuthContext} from './ContextTypes';
 type Props = {
   children?: React.ReactNode;
 };
-export const UserAuthContext = createContext<IUserAuthContext | undefined>({
+export const UserAuthContext = createContext<IUserAuthContext>({
   user: null,
   setUser: () => {},
   login: (email: string, password: string) => {},
